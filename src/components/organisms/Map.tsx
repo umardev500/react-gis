@@ -1,3 +1,7 @@
 export const Map = (): React.ReactNode => {
-    return <></>
+    return (
+        <>
+            <div id="map"></div>
+        </>
+    )
 }
