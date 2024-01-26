@@ -320,6 +320,26 @@
         ],
         "type": "Point"
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lokasi 17",
+        "jenis_bantuan": "Bantuan Pangan",
+        "provinsi": "Provinsi P",
+        "kabupaten": "Kabupaten Q",
+        "kecamatan": "Kecamatan R",
+        "alamat": "Jalan XYZ No. 999",
+        "tanggal": "2024-01-26",
+        "tahun": 2024
+      },
+      "geometry": {
+        "coordinates": [
+          132.40564385007713,
+          -0.7634663954704735
+        ],
+        "type": "Point"
+      }
     }
   ]
 }
