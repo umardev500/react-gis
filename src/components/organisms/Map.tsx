@@ -2,7 +2,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { GeoJSON, LayersControl, MapContainer } from 'react-leaflet'
 import geoData from '../../assets/geojson/map.json'
-import { HumanitarianTileLayer, SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
+import { SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
 import { popupContent } from '../molecules/popup'
 
 export const Map = (): React.ReactNode => {
@@ -44,10 +44,6 @@ export const Map = (): React.ReactNode => {
                 <LayersControl>
                     <LayersControl.BaseLayer checked name="Street">
                         <StreetTileLayer />
-                    </LayersControl.BaseLayer>
-
-                    <LayersControl.BaseLayer name="Humanitarian">
-                        <HumanitarianTileLayer />
                     </LayersControl.BaseLayer>
 
                     <LayersControl.BaseLayer name="Satellite">
