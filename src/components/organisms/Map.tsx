@@ -42,11 +42,11 @@ export const Map = (): React.ReactNode => {
                 className="absolute top-0 right-0 bottom-0 left-0"
             >
                 <LayersControl>
-                    <LayersControl.BaseLayer name="Street">
+                    <LayersControl.BaseLayer checked name="Street">
                         <StreetTileLayer />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.BaseLayer checked name="Humanitarian">
+                    <LayersControl.BaseLayer name="Humanitarian">
                         <HumanitarianTileLayer />
                     </LayersControl.BaseLayer>
 
