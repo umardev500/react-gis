@@ -4,6 +4,8 @@ import { GeoJSON, LayersControl, MapContainer } from 'react-leaflet'
 import geoData from '../../assets/geojson/map.json'
 import { HumanitarianTileLayer, SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
 import { popupContent } from '../molecules/popup'
+import { useGetLayer } from '../../hooks/api/GetLayer'
+import { useEffect, useState } from 'react'
 
 export const Map = (): React.ReactNode => {
     // const geoJSONStyle = {
@@ -13,6 +15,15 @@ export const Map = (): React.ReactNode => {
     //     opacity: 1, // Set the border opacity
     //     fillOpacity: 0.7, // Set the fill opacity
     // }
+    const [needToShow, setNeedToShow] = useState(false)
+
+    const { loading, data } = useGetLayer()
+    useEffect(() => {
+        if (!loading) {
+            const len = data.length
+            if (len < 1) setNeedToShow(true)
+        }
+    }, [loading])
 
     const pointToLayer = (feature: any, latlng: any) => {
         const markerColor = feature.properties['marker-color'] || '#ea580c'
@@ -54,9 +65,19 @@ export const Map = (): React.ReactNode => {
                         <SatelliteTileLayer />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.Overlay checked name="Bantuan">
-                        <GeoJSON pointToLayer={pointToLayer} data={geoData as any} />
-                    </LayersControl.Overlay>
+                    {data.map((val, i) => (
+                        <LayersControl.Overlay key={i} checked name={val.name}>
+                            <GeoJSON pointToLayer={pointToLayer} data={val.features as any} />
+                        </LayersControl.Overlay>
+                    ))}
+
+                    {needToShow ? (
+                        <>
+                            <LayersControl.Overlay checked name={'Bantuan Pemerintah'}>
+                                <GeoJSON pointToLayer={pointToLayer} data={geoData as any} />
+                            </LayersControl.Overlay>
+                        </>
+                    ) : null}
                 </LayersControl>
             </MapContainer>
         </>
