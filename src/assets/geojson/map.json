@@ -4,6 +4,26 @@
     {
       "type": "Feature",
       "properties": {
+        "nama": "Lokasi 13",
+        "jenis_bantuan": "Bantuan Pangan",
+        "provinsi": "Provinsi M",
+        "kabupaten": "Kabupaten Y",
+        "kecamatan": "Kecamatan Z",
+        "alamat": "Jalan ABC No. 555",
+        "tanggal": "2024-01-26",
+        "tahun": 2024
+      },
+      "geometry": {
+        "coordinates": [
+          113.32592468747737,
+          0.937926608020831
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "nama": "Lokasi 1",
         "jenis_bantuan": "Bantuan Pangan",
         "provinsi": "Provinsi A",
@@ -195,8 +215,8 @@
       },
       "geometry": {
         "coordinates": [
-          116.29866871249709,
-          4.828594749224322
+          111.84394718382384,
+          0.042006259565042114
         ],
         "type": "Point"
       }
@@ -215,8 +235,8 @@
       },
       "geometry": {
         "coordinates": [
-          115.2062245147896,
-          4.175015156291934
+          109.6791926032854,
+          0.862470899399753
         ],
         "type": "Point"
       }
@@ -235,28 +255,8 @@
       },
       "geometry": {
         "coordinates": [
-          115.14428034132135,
-          3.3047969606423777
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 13",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi M",
-        "kabupaten": "Kabupaten Y",
-        "kecamatan": "Kecamatan Z",
-        "alamat": "Jalan ABC No. 555",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          114.88026930370495,
-          2.554468250558969
+          116.23076644370332,
+          3.617261591573424
         ],
         "type": "Point"
       }
@@ -323,16 +323,7 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 17",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi P",
-        "kabupaten": "Kabupaten Q",
-        "kecamatan": "Kecamatan R",
-        "alamat": "Jalan XYZ No. 999",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
+      "properties": {},
       "geometry": {
         "coordinates": [
           132.40564385007713,
