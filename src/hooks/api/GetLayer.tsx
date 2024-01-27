@@ -12,11 +12,15 @@ export const useGetLayer = () => {
                 const res = await fetch(url)
                 const data: LayerResponse = await res.json()
                 const layers: GeoJSON[] = data.data
-                setData(layers)
+                setTimeout(() => {
+                    setData(layers)
+                }, 2000)
             } catch (err) {
                 console.log(err)
             } finally {
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 2000)
             }
         }
 

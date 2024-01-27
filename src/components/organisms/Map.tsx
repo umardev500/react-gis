@@ -5,6 +5,8 @@ import geoData from '../../assets/geojson/map.json'
 import { HumanitarianTileLayer, SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
 import { popupContent } from '../molecules/popup'
 import { useGetLayer } from '../../hooks/api/GetLayer'
+import Lottie from 'lottie-react'
+import animData from '../../assets/anim/anim-5.json'
 import { useEffect, useState } from 'react'
 
 export const Map = (): React.ReactNode => {
@@ -24,6 +26,8 @@ export const Map = (): React.ReactNode => {
             if (len < 1) setNeedToShow(true)
         }
     }, [loading])
+
+    console.log(loading)
 
     const pointToLayer = (feature: any, latlng: any) => {
         const markerColor = feature.properties['marker-color'] || '#ea580c'
@@ -47,10 +51,15 @@ export const Map = (): React.ReactNode => {
 
     return (
         <>
+            <div
+                className={`${!loading ? 'hide-loading' : ''} absolute bg-white !z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
+            >
+                <Lottie animationData={animData} loop className="w-1/3 lg:w-[180px]" />
+            </div>
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
                 zoom={6}
-                className="absolute top-0 right-0 bottom-0 left-0"
+                className="absolute top-0 right-0 bottom-0 left-0 -z-0"
             >
                 <LayersControl>
                     <LayersControl.BaseLayer checked name="Street">
