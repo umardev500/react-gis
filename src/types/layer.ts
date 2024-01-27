@@ -11,6 +11,9 @@ export interface GeoJSON {
 export interface GeoJSONFeature {
     type: string
     properties: {
+        'marker-color': string
+
+        // additional properties
         FCODE: string | null
         LCODE: string | null
         PROVINSI: string

@@ -1,25 +1,20 @@
+import { type GeoJSONFeature } from '../../../types'
 import { popupItem } from '../../atoms'
 
 export const popupContent = (feature: any): string => {
-    const {
-        PROVINSI: provinsi,
-        KABUPATEN: kabupaten,
-        KECAMATAN: kecamatan,
-        DESA: desa,
-        ALAMAT: alamat,
-        TGL_BAST: tanggal,
-        TAHUN: tahun,
-    } = feature.properties
+    const newFeature = feature as GeoJSONFeature
+
+    const { PROVINSI, KABUPATEN, KECAMATAN, DESA, ALAMAT, TGL_BAST, TAHUN } = newFeature.properties
 
     const popupContent = `
         <div class="popup-flex-container">
-        ${popupItem('Provinsi', provinsi)}
-        ${popupItem('Kabupaten', kabupaten)}
-        ${popupItem('Kecamatan', kecamatan)}
-        ${popupItem('Desa', desa)}
-        ${popupItem('Alamat', alamat)}
-        ${popupItem('Tanggal', tanggal)}
-        ${popupItem('Tahun', tahun)}
+        ${popupItem('Provinsi', PROVINSI)}
+        ${popupItem('Kabupaten', KABUPATEN)}
+        ${popupItem('Kecamatan', KECAMATAN)}
+        ${popupItem('Desa', DESA)}
+        ${popupItem('Alamat', ALAMAT)}
+        ${popupItem('Tanggal', TGL_BAST)}
+        ${popupItem('Tahun', TAHUN)}
         </div>
     `
 
