@@ -14,13 +14,13 @@ export const useGetLayer = () => {
                 const layers: GeoJSON[] = data.data
                 setTimeout(() => {
                     setData(layers)
-                }, 2000)
+                }, 1000)
             } catch (err) {
                 console.log(err)
             } finally {
                 setTimeout(() => {
                     setLoading(false)
-                }, 2000)
+                }, 1000)
             }
         }
 

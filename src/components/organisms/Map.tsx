@@ -52,10 +52,11 @@ export const Map = (): React.ReactNode => {
     return (
         <>
             <div
-                className={`${!loading ? 'hide-loading' : ''} absolute bg-white !z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
+                className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
                 <Lottie animationData={animData} loop className="w-1/3 lg:w-[180px]" />
             </div>
+
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
                 zoom={6}

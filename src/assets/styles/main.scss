@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .leaflet-popup-content {
-    max-width: 700px !important;
+    max-width: 7000px !important;
     padding-top: 10px;
 }
 
@@ -22,8 +22,14 @@
 .popup-grid-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
     margin-bottom: 8px;
+}
+
+.popup-label {
+    display: flex;
+    flex: 0.4;
+    justify-content: space-between;
 }
 
 .popup-title {
@@ -39,11 +45,10 @@
 
 .popup-value {
     flex: 1;
-    white-space: nowrap;
 }
 
 .hide-loading {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: -50;
+    z-index: 0;
+    transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out 0.5s;
 }
