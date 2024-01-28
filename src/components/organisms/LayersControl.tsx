@@ -3,11 +3,7 @@ import defaultLayer from '../../assets/icons/layer-default.png'
 import satelliteLayer from '../../assets/icons/satellite.png'
 import layersIcon from '../../assets/icons/layers.png'
 
-interface Props {
-    className?: string
-}
-
-export const LayersControl: React.FC<Props> = ({ className }) => {
+export const LayersControl = () => {
     const [isShow, setIsShow] = useState(false)
 
     const handleShow = useCallback(() => {

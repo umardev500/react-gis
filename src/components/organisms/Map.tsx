@@ -52,7 +52,7 @@ export const Map = (): React.ReactNode => {
 
     return (
         <>
-            <CustomControl className="z-10" />
+            <CustomControl />
             <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
