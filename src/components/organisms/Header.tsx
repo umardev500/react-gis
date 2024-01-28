@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import logo from '../../assets/logos/kkp-eng.png'
+import logo from '../../assets/logos/kkp-logo.png'
 
 export const Header = () => {
     const [checkboxState, setCheckboxState] = useState<Record<string, boolean>>({
@@ -16,15 +16,21 @@ export const Header = () => {
     }
 
     return (
-        <header className="px-4 py-1 header  absolute flex justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
-            <div>
+        <header className="px-4 py-1 h-16 header  absolute flex justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
+            <div className="flex items-center gap-4">
                 <img src={logo} alt="logo" className="w-10" />
+                <div className="text-white text-xs font-bold">
+                    <div>KEMENTRIAN</div>
+                    <div className="whitespace-nowrap">KELAUTAN DAN PERIKANAN</div>
+                </div>
             </div>
-            <nav className="flex py-4 px-4">
+            <nav className="hidden lg:flex py-4 px-4 ">
                 <ul className="flex gap-12">
                     <li>
                         <Popover className="relative">
-                            <Popover.Button className={`outline-none whitespace-nowrap`}>
+                            <Popover.Button
+                                className={`outline-none text-sm font-bold whitespace-nowrap text-white`}
+                            >
                                 Bantuan Pemerintah
                             </Popover.Button>
 
@@ -73,24 +79,24 @@ export const Header = () => {
                         </Popover>
                     </li>
                     <li>
-                        <a href="#" className="whitespace-nowrap">
+                        <a href="#" className="whitespace-nowrap text-white text-sm font-bold">
                             Kantor UPT
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="whitespace-nowrap">
+                        <a href="#" className="whitespace-nowrap text-white text-sm font-bold">
                             Wilayah Perairan
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="whitespace-nowrap">
+                        <a href="#" className="whitespace-nowrap text-white text-sm font-bold">
                             Garam Nasional
                         </a>
                     </li>
                 </ul>
             </nav>
             <div>
-                <button className="bg-transparent text-grey-600 hover:text-gray-500 px-4 py-2 rounded-lg">
+                <button className="bg-white text-sm font-semibold text-gray-700 hover:text-gray-500 px-6 py-1.5 rounded-lg">
                     Masuk
                 </button>
             </div>
