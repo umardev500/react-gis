@@ -90,7 +90,7 @@ export const Header = () => {
                 </ul>
             </nav>
             <div>
-                <button className="bg-white text-grey-600 hover:text-gray-500 px-4 py-2 rounded-lg">
+                <button className="bg-transparent text-grey-600 hover:text-gray-500 px-4 py-2 rounded-lg">
                     Masuk
                 </button>
             </div>

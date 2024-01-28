@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import defaultLayer from '../../assets/icons/layer-default.png'
 import layersIcon from '../../assets/icons/layers.png'
 import satelliteLayer from '../../assets/icons/satellite.png'
+import humanLayer from '../../assets/icons/humanitarian.png'
 import { type Layer } from '../../types'
 
 interface Props {
@@ -28,6 +29,10 @@ export const LayersControl: React.FC<Props> = ({ setSelectedLayer }) => {
         {
             name: 'Default',
             imgSrc: defaultLayer,
+        },
+        {
+            name: 'Humanitarian',
+            imgSrc: humanLayer,
         },
         {
             name: 'Satellite',
