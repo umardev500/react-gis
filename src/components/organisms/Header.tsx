@@ -18,7 +18,7 @@ export const Header = () => {
     }
 
     return (
-        <header className="px-4 py-1 h-16 header  absolute grid grid-cols-8 justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
+        <header className="px-4 py-1 h-16 header flex absolute lg:grid lg:grid-cols-8 justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
             <div className="flex col-span-2 items-center gap-4">
                 <img src={logo} alt="logo" className="w-10" />
                 <div className="text-white text-xs font-bold">
@@ -125,7 +125,7 @@ export const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <div className="col-span-2 flex justify-end">
+            <div className="col-span-2  flex justify-end">
                 <button className="bg-white text-sm font-semibold text-gray-700 hover:text-gray-500 px-6 py-1.5 rounded-lg">
                     Masuk
                 </button>
