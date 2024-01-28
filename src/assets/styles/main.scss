@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: "Roboto";
+}
+
 .leaflet-popup-content {
     max-width: 7000px !important;
     padding-top: 10px;
