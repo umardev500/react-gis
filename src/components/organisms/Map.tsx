@@ -1,6 +1,6 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { GeoJSON, LayersControl, MapContainer } from 'react-leaflet'
+import { GeoJSON, LayersControl, MapContainer, ZoomControl } from 'react-leaflet'
 import geoData from '../../assets/geojson/map.json'
 import { HumanitarianTileLayer, SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
 import { popupContent } from '../molecules/popup'
@@ -62,6 +62,7 @@ export const Map = (): React.ReactNode => {
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
                 zoom={6}
+                zoomControl={false}
                 className="absolute top-0 right-0 bottom-0 left-0 -z-0"
             >
                 <LayersControl>
@@ -91,6 +92,8 @@ export const Map = (): React.ReactNode => {
                         </>
                     ) : null}
                 </LayersControl>
+
+                <ZoomControl position="bottomright" />
             </MapContainer>
         </>
     )
