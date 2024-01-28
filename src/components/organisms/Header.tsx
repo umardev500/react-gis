@@ -38,7 +38,7 @@ export const Header = () => {
                                 leaveTo="transform scale-95 opacity-0"
                             >
                                 <Popover.Panel className="absolute z-10">
-                                    <div className="whitespace-nowrap shadow-xl flex flex-col gap-1.5 py-4 mt-5 bg-white rounded-lg p-2 px-4">
+                                    <div className="whitespace-nowrap shadow-xl flex flex-col gap-1.5 py-4 mt-7 bg-white rounded-lg p-2 px-4">
                                         <div className="flex items-center gap-2">
                                             <input
                                                 checked={checkboxState.wisata}
