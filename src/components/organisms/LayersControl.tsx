@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import defaultLayer from '../../assets/icons/layer-default.png'
-import satelliteLayer from '../../assets/icons/satellite.png'
 import layersIcon from '../../assets/icons/layers.png'
+import satelliteLayer from '../../assets/icons/satellite.png'
 
 export const LayersControl = () => {
     const [isShow, setIsShow] = useState(false)
