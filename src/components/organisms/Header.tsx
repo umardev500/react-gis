@@ -5,7 +5,9 @@ import logo from '../../assets/logos/kkp-logo.png'
 export const Header = () => {
     const [checkboxState, setCheckboxState] = useState<Record<string, boolean>>({
         wisata: false,
-        bencanaAlam: false,
+        adat: false,
+        konservasi: false,
+        bmkt: false,
     })
 
     const handleCheckboxChange = (checkboxId: string) => {
@@ -16,15 +18,15 @@ export const Header = () => {
     }
 
     return (
-        <header className="px-4 py-1 h-16 header  absolute flex justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
-            <div className="flex items-center gap-4">
+        <header className="px-4 py-1 h-16 header  absolute grid grid-cols-8 justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
+            <div className="flex col-span-2 items-center gap-4">
                 <img src={logo} alt="logo" className="w-10" />
                 <div className="text-white text-xs font-bold">
                     <div>KEMENTRIAN</div>
                     <div className="whitespace-nowrap">KELAUTAN DAN PERIKANAN</div>
                 </div>
             </div>
-            <nav className="hidden lg:flex py-4 px-4 ">
+            <nav className="hidden justify-center col-span-4 lg:flex py-4 px-4 ">
                 <ul className="flex gap-12">
                     <li>
                         <Popover className="relative">
@@ -47,31 +49,55 @@ export const Header = () => {
                                     <div className="whitespace-nowrap shadow-xl flex flex-col gap-1.5 py-4 mt-7 bg-white rounded-lg p-2 px-4">
                                         <div className="flex items-center gap-2">
                                             <input
-                                                checked={checkboxState.wisata}
+                                                checked={checkboxState.konservasi}
                                                 type="checkbox"
                                                 name=""
-                                                id="wisata"
+                                                id="konservasi"
                                                 onChange={() => {
-                                                    handleCheckboxChange('wisata')
+                                                    handleCheckboxChange('konservasi')
                                                 }}
                                             />
-                                            <label htmlFor="wisata">Sarana Wisata Bahari</label>
+                                            <label htmlFor="konservasi">
+                                                Kelompok Pengerang Konservasi
+                                            </label>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <input
-                                                checked={checkboxState.bencanaAlam}
+                                                checked={checkboxState.adat}
                                                 type="checkbox"
                                                 name=""
-                                                id="bencana_alam"
+                                                id="adat"
                                                 onChange={() => {
-                                                    handleCheckboxChange('bencanaAlam')
+                                                    handleCheckboxChange('adat')
                                                 }}
                                             />
-                                            <label htmlFor="bencana_alam">Bencana Alam</label>
+                                            <label htmlFor="adat">Hukum Adat</label>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <input type="checkbox" name="" id="konservasi" />
-                                            <label htmlFor="konservasi">Pengerang Konservasi</label>
+                                            <input
+                                                checked={checkboxState.wisata}
+                                                type="checkbox"
+                                                name=""
+                                                onChange={() => {
+                                                    handleCheckboxChange('wisata')
+                                                }}
+                                                id="wisata"
+                                            />
+                                            <label htmlFor="wisata">
+                                                Sarana Prasarana Wisata Bahari
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <input
+                                                checked={checkboxState.bmkt}
+                                                type="checkbox"
+                                                name=""
+                                                onChange={() => {
+                                                    handleCheckboxChange('bmkt')
+                                                }}
+                                                id="bmkt"
+                                            />
+                                            <label htmlFor="bmkt">Sarana Prasarana BMKT</label>
                                         </div>
                                     </div>
                                 </Popover.Panel>
@@ -95,7 +121,7 @@ export const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <div>
+            <div className="col-span-2 flex justify-end">
                 <button className="bg-white text-sm font-semibold text-gray-700 hover:text-gray-500 px-6 py-1.5 rounded-lg">
                     Masuk
                 </button>
