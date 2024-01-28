@@ -1,9 +1,19 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import defaultLayer from '../../assets/icons/layer-default.png'
 import layersIcon from '../../assets/icons/layers.png'
 import satelliteLayer from '../../assets/icons/satellite.png'
+import { type Layer } from '../../types'
 
-export const LayersControl = () => {
+interface Props {
+    setSelectedLayer: React.Dispatch<React.SetStateAction<Layer>>
+}
+
+interface LayerType {
+    name: Layer
+    imgSrc: string
+}
+
+export const LayersControl: React.FC<Props> = ({ setSelectedLayer }) => {
     // State
     const [isShow, setIsShow] = useState(false)
 
@@ -14,15 +24,13 @@ export const LayersControl = () => {
         setIsShow((prev) => !prev)
     }, [])
 
-    const layers = [
+    const layers: LayerType[] = [
         {
-            name: 'Standard',
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            name: 'Default',
             imgSrc: defaultLayer,
         },
         {
             name: 'Satellite',
-            url: 'https://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
             imgSrc: satelliteLayer,
         },
         // Add more layers as needed
@@ -46,7 +54,7 @@ export const LayersControl = () => {
         <div ref={parentRef} className="z-50 fixed bottom-4 left-4 items-end gap-2 inline-flex">
             <div
                 onClick={toggleMenu}
-                className="bg-white cursor-pointer h-12 w-12 flex items-center justify-center rounded-lg border-2 border-gray-400"
+                className="layers-menu cursor-pointer h-12 w-12 flex items-center justify-center rounded-lg border-2 border-gray-400"
             >
                 <img src={layersIcon} alt="layers" />
             </div>
@@ -57,7 +65,10 @@ export const LayersControl = () => {
                 {layers.map((val, i) => (
                     <div
                         key={i}
-                        onClick={toggleMenu}
+                        onClick={() => {
+                            toggleMenu()
+                            setSelectedLayer(val.name)
+                        }}
                         className={`w-12 rounded-lg overflow-hidden hover:ring-2 ring-blue-500 transition-all`}
                     >
                         <img className="w-12 cursor-pointer" src={val.imgSrc} alt="" />

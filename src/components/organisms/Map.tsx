@@ -9,6 +9,7 @@ import Lottie from 'lottie-react'
 import animData from '../../assets/anim/anim-5.json'
 import { useEffect, useState } from 'react'
 import { LayersControl as CustomControl } from './LayersControl'
+import { Layer } from '../../types'
 
 export const Map = (): React.ReactNode => {
     // const geoJSONStyle = {
@@ -19,6 +20,7 @@ export const Map = (): React.ReactNode => {
     //     fillOpacity: 0.7, // Set the fill opacity
     // }
     const [needToShow, setNeedToShow] = useState(false)
+    const [selectedLayer, setSelectedLayer] = useState<Layer>('Default')
 
     const { loading, data } = useGetLayer()
     useEffect(() => {
@@ -27,8 +29,6 @@ export const Map = (): React.ReactNode => {
             if (len < 1) setNeedToShow(true)
         }
     }, [loading])
-
-    console.log(loading)
 
     const pointToLayer = (feature: any, latlng: any) => {
         const markerColor = feature.properties['marker-color'] || '#ea580c'
@@ -52,7 +52,7 @@ export const Map = (): React.ReactNode => {
 
     return (
         <>
-            <CustomControl />
+            <CustomControl setSelectedLayer={setSelectedLayer} />
             <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
@@ -66,15 +66,21 @@ export const Map = (): React.ReactNode => {
                 className="absolute top-0 right-0 bottom-0 left-0 -z-0"
             >
                 <LayersControl>
-                    <LayersControl.BaseLayer checked name="Street">
+                    <LayersControl.BaseLayer checked={selectedLayer === 'Default'} name="Street">
                         <StreetTileLayer />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.BaseLayer name="Humanitarian">
+                    <LayersControl.BaseLayer
+                        checked={selectedLayer === 'Humanitarian'}
+                        name="Humanitarian"
+                    >
                         <HumanitarianTileLayer />
                     </LayersControl.BaseLayer>
 
-                    <LayersControl.BaseLayer name="Satellite">
+                    <LayersControl.BaseLayer
+                        checked={selectedLayer === 'Satellite'}
+                        name="Satellite"
+                    >
                         <SatelliteTileLayer />
                     </LayersControl.BaseLayer>
 

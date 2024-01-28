@@ -41,3 +41,5 @@ export interface GeoJSONFeature {
         coordinates: [number, number]
     }
 }
+
+export type Layer = 'Default' | 'Satellite' | 'Humanitarian'
