@@ -8,6 +8,7 @@ import { useGetLayer } from '../../hooks/api/GetLayer'
 import Lottie from 'lottie-react'
 import animData from '../../assets/anim/anim-5.json'
 import { useEffect, useState } from 'react'
+import { LayersControl as CustomControl } from './LayersControl'
 
 export const Map = (): React.ReactNode => {
     // const geoJSONStyle = {
@@ -51,6 +52,7 @@ export const Map = (): React.ReactNode => {
 
     return (
         <>
+            <CustomControl className="z-10" />
             <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >

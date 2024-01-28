@@ -52,3 +52,8 @@
     z-index: 0;
     transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out 0.5s;
 }
+
+// Layers
+.leaflet-control-layers {
+    display: none;
+}
