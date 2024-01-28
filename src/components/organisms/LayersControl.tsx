@@ -1,12 +1,16 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import defaultLayer from '../../assets/icons/layer-default.png'
 import layersIcon from '../../assets/icons/layers.png'
 import satelliteLayer from '../../assets/icons/satellite.png'
 
 export const LayersControl = () => {
+    // State
     const [isShow, setIsShow] = useState(false)
 
-    const handleShow = useCallback(() => {
+    // Refs
+    const parentRef = useRef<HTMLDivElement>(null)
+
+    const toggleMenu = useCallback(() => {
         setIsShow((prev) => !prev)
     }, [])
 
@@ -24,24 +28,36 @@ export const LayersControl = () => {
         // Add more layers as needed
     ]
 
+    const handleClickOutside = (event: MouseEvent) => {
+        if (parentRef.current && !parentRef.current.contains(event.target as Node)) {
+            setIsShow(false)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside)
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [])
+
     return (
-        <div className="z-50 fixed bottom-4 left-4 items-end gap-2 inline-flex">
+        <div ref={parentRef} className="z-50 fixed bottom-4 left-4 items-end gap-2 inline-flex">
             <div
-                onClick={handleShow}
+                onClick={toggleMenu}
                 className="bg-white cursor-pointer h-12 w-12 flex items-center justify-center rounded-lg border-2 border-gray-400"
             >
                 <img src={layersIcon} alt="layers" />
             </div>
 
             <div
-                onClick={() => {
-                    setIsShow(false)
-                }}
                 className={`${isShow ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-all left-full flex gap-2 bg-white px-2 py-2 rounded-lg shadow-lg ml-2 absolute`}
             >
                 {layers.map((val, i) => (
                     <div
                         key={i}
+                        onClick={toggleMenu}
                         className={`w-12 rounded-lg overflow-hidden hover:ring-2 ring-blue-500 transition-all`}
                     >
                         <img className="w-12 cursor-pointer" src={val.imgSrc} alt="" />
