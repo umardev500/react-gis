@@ -13,13 +13,6 @@ import { Layer } from '../../types'
 import { Header } from '.'
 
 export const Map = (): React.ReactNode => {
-    // const geoJSONStyle = {
-    //     fillColor: 'rgba(251, 146, 60, 0.4)', // Set the fill color
-    //     color: 'rgba(251, 146, 60, 1)', // Set the border color
-    //     weight: 2, // Set the border weight
-    //     opacity: 1, // Set the border opacity
-    //     fillOpacity: 0.7, // Set the fill opacity
-    // }
     const [needToShow, setNeedToShow] = useState(false)
     const [selectedLayer, setSelectedLayer] = useState<Layer>('Default')
 
