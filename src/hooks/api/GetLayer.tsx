@@ -4,9 +4,10 @@ import { type GeoJSON, type LayerResponse } from '../../types'
 export const useGetLayer = () => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState<GeoJSON[]>([])
+    const api = import.meta.env.VITE_API
 
     useEffect(() => {
-        const url = 'https://kkp.komit.co.id/api/layer'
+        const url = `${api}/layer`
         const fetchData = async () => {
             try {
                 const res = await fetch(url)
