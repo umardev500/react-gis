@@ -1,20 +1,28 @@
-import { type GeoJSONFeature } from '../../../types'
+import { capitalizeFirstLetterOfEachWord } from '../../../utils'
 import { popupItem } from '../../atoms'
 
-export const popupContent = (feature: any): string => {
-    const newFeature = feature as GeoJSONFeature
+interface Properties {
+    title: string
+    value: string
+}
 
-    const { PROVINSI, KABUPATEN, KECAMATAN, DESA, ALAMAT, TGL_BAST, TAHUN } = newFeature.properties
+export const popupContent = (feature: any): string => {
+    const prop: Properties[] = []
+
+    const data = feature.properties
+    for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+            const value = data[key]
+            prop.push({
+                title: capitalizeFirstLetterOfEachWord(key),
+                value: capitalizeFirstLetterOfEachWord(value as string),
+            })
+        }
+    }
 
     const popupContent = `
         <div class="popup-flex-container">
-        ${popupItem('Provinsi', PROVINSI)}
-        ${popupItem('Kabupaten', KABUPATEN)}
-        ${popupItem('Kecamatan', KECAMATAN)}
-        ${popupItem('Desa', DESA)}
-        ${popupItem('Alamat', ALAMAT)}
-        ${popupItem('Tanggal', TGL_BAST)}
-        ${popupItem('Tahun', TAHUN)}
+            ${prop.map((val) => popupItem(val.title, val.value)).join('')}
         </div>
     `
 
