@@ -59,6 +59,7 @@ export const Map = (): React.ReactNode => {
                         type: 'Feature',
                         properties: {
                             kategori: 'Jalan',
+                            alamat: 'Jl. Raya Labuan Km.12',
                         },
                         geometry: {
                             coordinates: [115.7463895815444, -2.7746246962266525],

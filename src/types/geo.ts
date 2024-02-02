@@ -10,9 +10,7 @@ export interface Geo {
 
 export interface GeoFeature {
     type: string
-    properties: {
-        kategori: string
-    }
+    properties: any
     geometry: {
         coordinates: number[]
         type: string
