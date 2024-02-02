@@ -9,8 +9,10 @@ import Lottie from 'lottie-react'
 import animData from '../../assets/anim/anim-5.json'
 import { useEffect, useState } from 'react'
 import { LayersControl as CustomControl } from './LayersControl'
-import { Layer } from '../../types'
+import { Category, Geo, Layer, ResponseData } from '../../types'
 import { Header } from '.'
+import dummyData from '../../assets/geojson/dummy.json'
+import { Keys, getKeys, groupFeatures } from '../../utils'
 
 export const Map = (): React.ReactNode => {
     const [needToShow, setNeedToShow] = useState(false)
@@ -44,15 +46,96 @@ export const Map = (): React.ReactNode => {
         return marker
     }
 
+    const geoJsonDatasets: ResponseData[] = [
+        {
+            name: 'Geo 1',
+        },
+        {
+            name: 'bantuan',
+            data: {
+                type: 'FeatureCollection',
+                features: [
+                    {
+                        type: 'Feature',
+                        properties: {
+                            kategori: 'Jalan',
+                        },
+                        geometry: {
+                            coordinates: [115.7463895815444, -2.7746246962266525],
+                            type: 'Point',
+                        },
+                        id: 0,
+                    },
+                    {
+                        type: 'Feature',
+                        properties: {
+                            kategori: 'sarana prasarana',
+                        },
+                        geometry: {
+                            coordinates: [112.7142735198754, -1.1744708839206623],
+                            type: 'Point',
+                        },
+                        id: 1,
+                    },
+                ],
+            },
+        },
+    ]
+
+    // Selected categories
+    const [selCat, setSelCat] = useState<Category[]>([
+        {
+            name: 'Geo 1',
+            categories: ['foo', 'bar'],
+        },
+        {
+            name: 'bantuan',
+            categories: ['jalan', 'sarana prasarana'],
+        },
+    ])
+    // Filtered data
+    const [filData, setFilData] = useState<ResponseData[]>([])
+
+    // Watch fitler change
+    useEffect(() => {
+        const filteredData = geoJsonDatasets.map((dataset) => {
+            if (dataset.data !== undefined) {
+                const cat = selCat.find((cat) => cat.name === dataset.name)
+
+                return {
+                    ...dataset,
+                    data: {
+                        ...dataset.data,
+                        features: groupFeatures(dataset.data.features, cat?.categories),
+                    },
+                }
+            } else {
+                return dataset
+            }
+        })
+
+        setFilData(filteredData)
+    }, [selCat])
+
+    // Keys
+    const [keys, setKeys] = useState<Keys[]>([])
+
+    // Get keys
+    useEffect(() => {
+        const keysData = getKeys(geoJsonDatasets)
+        setKeys(keysData)
+    }, [])
+
     return (
         <>
-            <Header />
+            <Header keys={keys} />
             <CustomControl setSelectedLayer={setSelectedLayer} />
-            <div
+
+            {/* <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
                 <Lottie animationData={animData} loop className="w-1/3 lg:w-[180px]" />
-            </div>
+            </div> */}
 
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
@@ -79,7 +162,17 @@ export const Map = (): React.ReactNode => {
                         <SatelliteTileLayer />
                     </LayersControl.BaseLayer>
 
-                    {data.map((val, i) => (
+                    {/* <LayersControl.Overlay checked name={'Bantuan'}>
+                        <GeoJSON pointToLayer={pointToLayer} data={dummyData as any} />
+                    </LayersControl.Overlay> */}
+
+                    {filData.map((val, i) => (
+                        <LayersControl.Overlay key={i} checked name={i.toString()}>
+                            <GeoJSON pointToLayer={pointToLayer} data={val.data?.features as any} />
+                        </LayersControl.Overlay>
+                    ))}
+
+                    {/* {data.map((val, i) => (
                         <LayersControl.Overlay key={i} checked name={val.name}>
                             <GeoJSON pointToLayer={pointToLayer} data={val.features as any} />
                         </LayersControl.Overlay>
@@ -91,7 +184,7 @@ export const Map = (): React.ReactNode => {
                                 <GeoJSON pointToLayer={pointToLayer} data={geoData as any} />
                             </LayersControl.Overlay>
                         </>
-                    ) : null}
+                    ) : null} */}
                 </LayersControl>
 
                 <ZoomControl position="bottomright" />

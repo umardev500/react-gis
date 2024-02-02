@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Geo 2",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "kategori": "Jalan"
+                    },
+                    "geometry": {
+                        "coordinates": [115.7463895815444, -2.7746246962266525],
+                        "type": "Point"
+                    },
+                    "id": 0
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "kategori": "jalan"
+                    },
+                    "geometry": {
+                        "coordinates": [112.7142735198754, -1.1744708839206623],
+                        "type": "Point"
+                    },
+                    "id": 1
+                }
+            ]
+        }
+    }
+]

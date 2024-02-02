@@ -1,8 +1,13 @@
 import { Popover, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import logo from '../../assets/logos/kkp-logo.png'
+import { capitalizeFirstLetterOfEachWord, type Keys } from '../../utils'
 
-export const Header = () => {
+interface Props {
+    keys?: Keys[]
+}
+
+export const Header: React.FC<Props> = ({ keys }) => {
     const [checkboxState, setCheckboxState] = useState<Record<string, boolean>>({
         wisata: false,
         adat: false,
@@ -10,12 +15,12 @@ export const Header = () => {
         bmkt: false,
     })
 
-    const handleCheckboxChange = (checkboxId: string) => {
-        setCheckboxState((prev) => ({
-            ...prev,
-            [checkboxId]: !prev[checkboxId],
-        }))
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const name = event.target.name
+        setCheckboxState((prev) => ({ ...prev, [name]: event.target.checked }))
     }
+
+    const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
 
     return (
         <header className="px-4 py-1 h-16 header flex absolute lg:grid lg:grid-cols-8 justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
@@ -47,62 +52,20 @@ export const Header = () => {
                             >
                                 <Popover.Panel className="absolute z-10">
                                     <div className="whitespace-nowrap shadow-xl flex flex-col gap-2.5 py-4 mt-7 bg-white rounded-lg p-2 px-4">
-                                        <div className="flex items-center gap-2">
-                                            <input
-                                                checked={checkboxState.konservasi}
-                                                type="checkbox"
-                                                name=""
-                                                id="konservasi"
-                                                onChange={() => {
-                                                    handleCheckboxChange('konservasi')
-                                                }}
-                                            />
-                                            <label className="text-sm" htmlFor="konservasi">
-                                                Kelompok Pengerang Konservasi
-                                            </label>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <input
-                                                checked={checkboxState.adat}
-                                                type="checkbox"
-                                                name=""
-                                                id="adat"
-                                                onChange={() => {
-                                                    handleCheckboxChange('adat')
-                                                }}
-                                            />
-                                            <label className="text-sm" htmlFor="adat">
-                                                Hukum Adat
-                                            </label>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <input
-                                                checked={checkboxState.wisata}
-                                                type="checkbox"
-                                                name=""
-                                                onChange={() => {
-                                                    handleCheckboxChange('wisata')
-                                                }}
-                                                id="wisata"
-                                            />
-                                            <label className="text-sm" htmlFor="wisata">
-                                                Sarana Prasarana Wisata Bahari
-                                            </label>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <input
-                                                checked={checkboxState.bmkt}
-                                                type="checkbox"
-                                                name=""
-                                                onChange={() => {
-                                                    handleCheckboxChange('bmkt')
-                                                }}
-                                                id="bmkt"
-                                            />
-                                            <label className="text-sm" htmlFor="bmkt">
-                                                Sarana Prasarana BMKT
-                                            </label>
-                                        </div>
+                                        {bantuan?.cateogories?.map((item, i) => (
+                                            <div key={i} className="flex items-center gap-2">
+                                                <input
+                                                    checked={checkboxState[item] || false}
+                                                    type="checkbox"
+                                                    name={item}
+                                                    id={item}
+                                                    onChange={handleChange}
+                                                />
+                                                <label className="text-sm" htmlFor={item}>
+                                                    {capitalizeFirstLetterOfEachWord(item)}
+                                                </label>
+                                            </div>
+                                        ))}
                                     </div>
                                 </Popover.Panel>
                             </Transition>
