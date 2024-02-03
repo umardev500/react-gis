@@ -41,8 +41,10 @@ export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) 
         })
     }
 
-    const bantuanItem = geoJsonDatasets.filter((val) => val.name === 'bantuan')[0]
-    const bantuanData = bantuanItem.data
+    const bantuanItem = geoJsonDatasets.filter(
+        (val) => val.name.toLowerCase() === 'Bantuan pemerintah'.toLowerCase()
+    )[0]
+    const bantuanData = bantuanItem?.data
     let bantuanCats = bantuanData?.map((val) => val.name)
     bantuanCats = bantuanCats?.filter((val) => val !== undefined)
 

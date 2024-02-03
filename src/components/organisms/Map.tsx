@@ -40,89 +40,18 @@ export const Map = (): React.ReactNode => {
         return marker
     }
 
-    const geoJsonDatasets: ResponseData[] = [
+    const [geoJsonDatasets, setGeo] = useState<ResponseData[]>([
         {
-            name: 'Geo 1',
+            name: 'none',
         },
-        {
-            name: 'bantuan',
-            data: [
-                {
-                    type: 'FeatureCollection',
-                    name: 'Map Bantuan Sarana BMKT',
-                    features: [
-                        {
-                            type: 'Feature',
-                            properties: {
-                                alamat: 'Jl. Raya Indonesia Km. 68',
-                            },
-                            geometry: {
-                                coordinates: [112.7142735198754, -1.1744708839206623],
-                                type: 'Point',
-                            },
-                            id: 0,
-                        },
-                        {
-                            type: 'Feature',
-                            properties: {},
-                            geometry: {
-                                coordinates: [
-                                    [
-                                        [109.90560002872098, 0.9728311840812154],
-                                        [110.84735217324487, -1.6758041092787437],
-                                        [112.25189848267104, 0.4393852162238261],
-                                        [109.90560002872098, 0.9728311840812154],
-                                    ],
-                                ],
-                                type: 'Polygon',
-                            },
-                        },
-                    ],
-                },
-                {
-                    type: 'FeatureCollection',
-                    name: 'Map Bantuan Sarana Wisata Bahari',
-                    features: [
-                        {
-                            type: 'Feature',
-                            properties: {
-                                kategori: 'Jalan',
-                                provinsi: 'Provinsi F',
-                                kabupaten: 'Kabupaten R',
-                                kecamatan: 'Kecamatan S',
-                                alamat: 'Jalan LMN No. 333',
-                                tanggal: '2024-01-26',
-                                tahun: '2024',
-                            },
-                            geometry: {
-                                coordinates: [115.7463895815444, -2.7746246962266525],
-                                type: 'Point',
-                            },
-                            id: 0,
-                        },
-                        {
-                            type: 'Feature',
-                            properties: {
-                                kategori: 'sarana prasarana',
-                                provinsi: 'Provinsi G',
-                                kabupaten: 'Kabupaten S',
-                                kecamatan: 'Kecamatan T',
-                                alamat: 'Jalan UVW No. 555',
-                                tanggal: '2024-01-26',
-                                tahun: '2024',
-                            },
-                            geometry: {
-                                coordinates: [112.7142735198754, -1.1744708839206623],
-                                type: 'Point',
-                            },
-                            id: 1,
-                        },
-                    ],
-                },
-            ],
-        },
-    ]
+    ])
 
+    useEffect(() => {
+        const geoData = data
+        if (data !== undefined) {
+            setGeo((prev) => [...prev, ...geoData])
+        }
+    }, [data])
     // Selected categories
     const [selCat, setSelCat] = useState<Category[]>([])
 

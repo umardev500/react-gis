@@ -55,7 +55,7 @@ export const MapChild: React.FC<Props> = ({
     useEffect(() => {
         const filteredData = geoJsonDatasets.map((dataset) => {
             const datasetName = dataset.name.toLowerCase().trim()
-            if (dataset.data !== undefined) {
+            if (dataset.data !== undefined && dataset.data.length > 0) {
                 const cat = selCat.find((cat) => cat.name.toLowerCase().trim() === datasetName)
 
                 return {
@@ -83,6 +83,8 @@ export const MapChild: React.FC<Props> = ({
             return (
                 <LayersControl.Overlay key={i} checked={i === 1} name={i.toString()}>
                     {data?.map((item) => {
+                        if (item.name === 'none') return null
+
                         const keyGen = Math.random().toString()
                         return (
                             <GeoJSON
