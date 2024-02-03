@@ -1,3 +1,4 @@
+export const group = 'unused'
 // import { type ResponseData, type GeoFeature } from '../types'
 
 // export interface Keys {
