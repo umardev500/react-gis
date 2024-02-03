@@ -7,6 +7,8 @@ import { useGetLayer } from '../../hooks/api/GetLayer'
 import { type Category, type Layer, type ResponseData } from '../../types'
 import { popupContent } from '../molecules/popup'
 import { LayersControl as CustomControl } from './LayersControl'
+import animData from '../../assets/anim/anim-5.json'
+import Lottie from 'lottie-react'
 
 export const Map = (): React.ReactNode => {
     const [needToShow, setNeedToShow] = useState(false)
@@ -60,11 +62,11 @@ export const Map = (): React.ReactNode => {
             <Header geoJsonDatasets={geoJsonDatasets} selCat={selCat} setSelCat={setSelCat} />
             <CustomControl setSelectedLayer={setSelectedLayer} />
 
-            {/* <div
+            <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
                 <Lottie animationData={animData} loop className="w-1/3 lg:w-[180px]" />
-            </div> */}
+            </div>
 
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
