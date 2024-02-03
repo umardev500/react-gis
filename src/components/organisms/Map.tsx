@@ -109,16 +109,8 @@ export const Map = (): React.ReactNode => {
     ]
 
     // Selected categories
-    const [selCat, setSelCat] = useState<Category[]>([
-        {
-            name: 'Geo 1',
-            categories: ['foo', 'bar'],
-        },
-        {
-            name: 'bantuan',
-            categories: ['Map Bantuan Sarana Wisata Bahari'],
-        },
-    ])
+    const [selCat, setSelCat] = useState<Category[]>([])
+    console.log(selCat)
 
     return (
         <>

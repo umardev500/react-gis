@@ -14,9 +14,18 @@ export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target
         const name = target.name
-        const group = target.dataset.group
+        const group = target.dataset.group!
 
         setSelCat((prev) => {
+            // Create initial filter
+            const current = prev.find((val) => val.name === group)
+            if (current === undefined) {
+                prev.push({
+                    name: group,
+                    categories: [],
+                })
+            }
+
             return prev.map((val) => {
                 if (val.name === group) {
                     return {
