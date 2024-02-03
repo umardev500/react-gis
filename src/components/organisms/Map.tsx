@@ -1,18 +1,13 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { GeoJSON, LayersControl, MapContainer, ZoomControl } from 'react-leaflet'
-import geoData from '../../assets/geojson/map.json'
-import { HumanitarianTileLayer, SatelliteTileLayer, StreetTileLayer } from '../molecules/layers'
-import { popupContent } from '../molecules/popup'
-import { useGetLayer } from '../../hooks/api/GetLayer'
-import Lottie from 'lottie-react'
-import animData from '../../assets/anim/anim-5.json'
 import { useEffect, useState } from 'react'
+import { MapContainer, ZoomControl } from 'react-leaflet'
+import { Header, MapChild } from '.'
+import { useGetLayer } from '../../hooks/api/GetLayer'
+import { type Category, type Layer, type ResponseData } from '../../types'
+import { type Keys, getKeys } from '../../utils'
+import { popupContent } from '../molecules/popup'
 import { LayersControl as CustomControl } from './LayersControl'
-import { Category, Geo, Layer, ResponseData } from '../../types'
-import { Header } from '.'
-import dummyData from '../../assets/geojson/dummy.json'
-import { Keys, getKeys, groupFeatures } from '../../utils'
 
 export const Map = (): React.ReactNode => {
     const [needToShow, setNeedToShow] = useState(false)
@@ -105,29 +100,6 @@ export const Map = (): React.ReactNode => {
             categories: ['jalan', 'sarana prasarana'],
         },
     ])
-    // Filtered data
-    const [filData, setFilData] = useState<ResponseData[]>([])
-
-    // Watch fitler change
-    useEffect(() => {
-        const filteredData = geoJsonDatasets.map((dataset) => {
-            if (dataset.data !== undefined) {
-                const cat = selCat.find((cat) => cat.name === dataset.name)
-
-                return {
-                    ...dataset,
-                    data: {
-                        ...dataset.data,
-                        features: groupFeatures(dataset.data.features, cat?.categories),
-                    },
-                }
-            } else {
-                return dataset
-            }
-        })
-
-        setFilData(filteredData)
-    }, [selCat])
 
     // Keys
     const [keys, setKeys] = useState<Keys[]>([])
@@ -155,50 +127,13 @@ export const Map = (): React.ReactNode => {
                 zoomControl={false}
                 className="absolute top-16 right-0 bottom-0 left-0 -z-0"
             >
-                <LayersControl>
-                    <LayersControl.BaseLayer checked={selectedLayer === 'Default'} name="Street">
-                        <StreetTileLayer />
-                    </LayersControl.BaseLayer>
-
-                    <LayersControl.BaseLayer
-                        checked={selectedLayer === 'Humanitarian'}
-                        name="Humanitarian"
-                    >
-                        <HumanitarianTileLayer />
-                    </LayersControl.BaseLayer>
-
-                    <LayersControl.BaseLayer
-                        checked={selectedLayer === 'Satellite'}
-                        name="Satellite"
-                    >
-                        <SatelliteTileLayer />
-                    </LayersControl.BaseLayer>
-
-                    {/* <LayersControl.Overlay checked name={'Bantuan'}>
-                        <GeoJSON pointToLayer={pointToLayer} data={dummyData as any} />
-                    </LayersControl.Overlay> */}
-
-                    {filData.map((val, i) => (
-                        <LayersControl.Overlay key={i} checked name={i.toString()}>
-                            <GeoJSON pointToLayer={pointToLayer} data={val.data?.features as any} />
-                        </LayersControl.Overlay>
-                    ))}
-
-                    {/* {data.map((val, i) => (
-                        <LayersControl.Overlay key={i} checked name={val.name}>
-                            <GeoJSON pointToLayer={pointToLayer} data={val.features as any} />
-                        </LayersControl.Overlay>
-                    ))}
-
-                    
-                    {needToShow ? (
-                        <>
-                            <LayersControl.Overlay checked name={'Bantuan Pemerintah'}>
-                                <GeoJSON pointToLayer={pointToLayer} data={geoData as any} />
-                            </LayersControl.Overlay>
-                        </>
-                    ) : null} */}
-                </LayersControl>
+                <MapChild
+                    geoJsonDatasets={geoJsonDatasets}
+                    selCat={selCat}
+                    pointToLayer={pointToLayer}
+                    selectedLayer={selectedLayer}
+                    needToShow={needToShow}
+                />
 
                 <ZoomControl position="bottomright" />
             </MapContainer>

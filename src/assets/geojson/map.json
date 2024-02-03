@@ -1,336 +1,285 @@
 {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 13",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi M",
-        "kabupaten": "Kabupaten Y",
-        "kecamatan": "Kecamatan Z",
-        "alamat": "Jalan ABC No. 555",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          113.32592468747737,
-          0.937926608020831
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 1",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi A",
-        "kabupaten": "Kabupaten X",
-        "kecamatan": "Kecamatan Y",
-        "alamat": "Jalan ABC No. 123",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          117.80963183975598,
-          1.2920563895683301
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 2",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi B",
-        "kabupaten": "Kabupaten Y",
-        "kecamatan": "Kecamatan Z",
-        "alamat": "Jalan XYZ No. 456",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          113.76306201363911,
-          -0.9899456381230891
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 3",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi C",
-        "kabupaten": "Kabupaten Z",
-        "kecamatan": "Kecamatan X",
-        "alamat": "Jalan PQR No. 789",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          116.11295840694805,
-          0.8649981066707255
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 4",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi D",
-        "kabupaten": "Kabupaten P",
-        "kecamatan": "Kecamatan Q",
-        "alamat": "Jalan UVW No. 101",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          115.15609880549016,
-          0.3052627936294101
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 5",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi E",
-        "kabupaten": "Kabupaten Q",
-        "kecamatan": "Kecamatan R",
-        "alamat": "Jalan XYZ No. 222",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          104.91573132688029,
-          -3.15269755233831
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 6",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi F",
-        "kabupaten": "Kabupaten R",
-        "kecamatan": "Kecamatan S",
-        "alamat": "Jalan LMN No. 333",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          127.47977624551828,
-          -3.5696033922214667
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 7",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi G",
-        "kabupaten": "Kabupaten S",
-        "kecamatan": "Kecamatan T",
-        "alamat": "Jalan UVW No. 555",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          121.60276489812361,
-          -1.4525108002578122
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 8",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi H",
-        "kabupaten": "Kabupaten T",
-        "kecamatan": "Kecamatan U",
-        "alamat": "Jalan ABC No. 789",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          120.10464387832457,
-          -3.9960477403806465
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 9",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi I",
-        "kabupaten": "Kabupaten U",
-        "kecamatan": "Kecamatan V",
-        "alamat": "Jalan PQR No. 987",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          115.35495202736814,
-          -3.282294018878659
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 10",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi J",
-        "kabupaten": "Kabupaten V",
-        "kecamatan": "Kecamatan W",
-        "alamat": "Jalan LMN No. 555",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          111.84394718382384,
-          0.042006259565042114
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 11",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi K",
-        "kabupaten": "Kabupaten W",
-        "kecamatan": "Kecamatan X",
-        "alamat": "Jalan PQR No. 333",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          109.6791926032854,
-          0.862470899399753
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 12",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi L",
-        "kabupaten": "Kabupaten X",
-        "kecamatan": "Kecamatan Y",
-        "alamat": "Jalan UVW No. 999",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          116.23076644370332,
-          3.617261591573424
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 14",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi N",
-        "kabupaten": "Kabupaten Z",
-        "kecamatan": "Kecamatan X",
-        "alamat": "Jalan PQR No. 222",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          113.3688538810083,
-          -7.887447519368806
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 15",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi O",
-        "kabupaten": "Kabupaten P",
-        "kecamatan": "Kecamatan Q",
-        "alamat": "Jalan UVW No. 777",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          113.11322251092315,
-          -2.1783715452094867
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nama": "Lokasi 16",
-        "jenis_bantuan": "Bantuan Pangan",
-        "provinsi": "Provinsi P",
-        "kabupaten": "Kabupaten Q",
-        "kecamatan": "Kecamatan R",
-        "alamat": "Jalan XYZ No. 999",
-        "tanggal": "2024-01-26",
-        "tahun": 2024
-      },
-      "geometry": {
-        "coordinates": [
-          109.07798234378572,
-          -7.623793103708294
-        ],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          132.40564385007713,
-          -0.7634663954704735
-        ],
-        "type": "Point"
-      }
-    }
-  ]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 13",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi M",
+                "kabupaten": "Kabupaten Y",
+                "kecamatan": "Kecamatan Z",
+                "alamat": "Jalan ABC No. 555",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [113.32592468747737, 0.937926608020831],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 1",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi A",
+                "kabupaten": "Kabupaten X",
+                "kecamatan": "Kecamatan Y",
+                "alamat": "Jalan ABC No. 123",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [117.80963183975598, 1.2920563895683301],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 2",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi B",
+                "kabupaten": "Kabupaten Y",
+                "kecamatan": "Kecamatan Z",
+                "alamat": "Jalan XYZ No. 456",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [113.76306201363911, -0.9899456381230891],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 3",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi C",
+                "kabupaten": "Kabupaten Z",
+                "kecamatan": "Kecamatan X",
+                "alamat": "Jalan PQR No. 789",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [116.11295840694805, 0.8649981066707255],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 4",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi D",
+                "kabupaten": "Kabupaten P",
+                "kecamatan": "Kecamatan Q",
+                "alamat": "Jalan UVW No. 101",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [115.15609880549016, 0.3052627936294101],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 5",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi E",
+                "kabupaten": "Kabupaten Q",
+                "kecamatan": "Kecamatan R",
+                "alamat": "Jalan XYZ No. 222",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [104.91573132688029, -3.15269755233831],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 6",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi F",
+                "kabupaten": "Kabupaten R",
+                "kecamatan": "Kecamatan S",
+                "alamat": "Jalan LMN No. 333",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [127.47977624551828, -3.5696033922214667],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 7",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi G",
+                "kabupaten": "Kabupaten S",
+                "kecamatan": "Kecamatan T",
+                "alamat": "Jalan UVW No. 555",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [121.60276489812361, -1.4525108002578122],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 8",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi H",
+                "kabupaten": "Kabupaten T",
+                "kecamatan": "Kecamatan U",
+                "alamat": "Jalan ABC No. 789",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [120.10464387832457, -3.9960477403806465],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 9",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi I",
+                "kabupaten": "Kabupaten U",
+                "kecamatan": "Kecamatan V",
+                "alamat": "Jalan PQR No. 987",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [115.35495202736814, -3.282294018878659],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 10",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi J",
+                "kabupaten": "Kabupaten V",
+                "kecamatan": "Kecamatan W",
+                "alamat": "Jalan LMN No. 555",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [111.84394718382384, 0.042006259565042114],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 11",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi K",
+                "kabupaten": "Kabupaten W",
+                "kecamatan": "Kecamatan X",
+                "alamat": "Jalan PQR No. 333",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [109.6791926032854, 0.862470899399753],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 12",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi L",
+                "kabupaten": "Kabupaten X",
+                "kecamatan": "Kecamatan Y",
+                "alamat": "Jalan UVW No. 999",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [116.23076644370332, 3.617261591573424],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 14",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi N",
+                "kabupaten": "Kabupaten Z",
+                "kecamatan": "Kecamatan X",
+                "alamat": "Jalan PQR No. 222",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [113.3688538810083, -7.887447519368806],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 15",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi O",
+                "kabupaten": "Kabupaten P",
+                "kecamatan": "Kecamatan Q",
+                "alamat": "Jalan UVW No. 777",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [113.11322251092315, -2.1783715452094867],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nama": "Lokasi 16",
+                "jenis_bantuan": "Bantuan Pangan",
+                "provinsi": "Provinsi P",
+                "kabupaten": "Kabupaten Q",
+                "kecamatan": "Kecamatan R",
+                "alamat": "Jalan XYZ No. 999",
+                "tanggal": "2024-01-26",
+                "tahun": "2024"
+            },
+            "geometry": {
+                "coordinates": [109.07798234378572, -7.623793103708294],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [132.40564385007713, -0.7634663954704735],
+                "type": "Point"
+            }
+        }
+    ]
 }

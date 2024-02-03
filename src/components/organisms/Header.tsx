@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react'
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import logo from '../../assets/logos/kkp-logo.png'
 import { type Category } from '../../types'
 import { capitalizeFirstLetterOfEachWord, type Keys } from '../../utils'
@@ -33,9 +33,6 @@ export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
     }
 
     const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
-    useEffect(() => {
-        console.log(selCat)
-    }, [selCat])
 
     const getCheckState = (name: string): boolean => {
         const item = selCat?.filter((val) => val.categories.includes(name))
