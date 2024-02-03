@@ -128,9 +128,12 @@ export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) 
                 </ul>
             </nav>
             <div className="col-span-2  flex justify-end">
-                <button className="bg-white text-sm font-semibold text-gray-700 hover:text-gray-500 px-6 py-1.5 rounded-lg">
+                <a
+                    href="https://kkp.komit.co.id"
+                    className="bg-white text-sm font-semibold text-gray-700 hover:text-gray-500 px-6 py-1.5 rounded-lg"
+                >
                     Masuk
-                </button>
+                </a>
             </div>
         </header>
     )
