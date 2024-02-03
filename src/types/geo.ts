@@ -1,10 +1,11 @@
 export interface ResponseData {
     name: string
-    data?: Geo
+    data?: Geo[]
 }
 
 export interface Geo {
     type: string
+    name: string
     features: GeoFeature[]
 }
 

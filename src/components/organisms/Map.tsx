@@ -5,7 +5,6 @@ import { MapContainer, ZoomControl } from 'react-leaflet'
 import { Header, MapChild } from '.'
 import { useGetLayer } from '../../hooks/api/GetLayer'
 import { type Category, type Layer, type ResponseData } from '../../types'
-import { type Keys, getKeys } from '../../utils'
 import { popupContent } from '../molecules/popup'
 import { LayersControl as CustomControl } from './LayersControl'
 
@@ -47,45 +46,65 @@ export const Map = (): React.ReactNode => {
         },
         {
             name: 'bantuan',
-            data: {
-                type: 'FeatureCollection',
-                features: [
-                    {
-                        type: 'Feature',
-                        properties: {
-                            kategori: 'Jalan',
-                            provinsi: 'Provinsi F',
-                            kabupaten: 'Kabupaten R',
-                            kecamatan: 'Kecamatan S',
-                            alamat: 'Jalan LMN No. 333',
-                            tanggal: '2024-01-26',
-                            tahun: '2024',
+            data: [
+                {
+                    type: 'FeatureCollection',
+                    name: 'Map Bantuan Sarana BMKT',
+                    features: [
+                        {
+                            type: 'Feature',
+                            properties: {
+                                alamat: 'Jl. Raya Indonesia Km. 68',
+                            },
+                            geometry: {
+                                coordinates: [112.7142735198754, -1.1744708839206623],
+                                type: 'Point',
+                            },
+                            id: 0,
                         },
-                        geometry: {
-                            coordinates: [115.7463895815444, -2.7746246962266525],
-                            type: 'Point',
+                    ],
+                },
+                {
+                    type: 'FeatureCollection',
+                    name: 'Map Bantuan Sarana Wisata Bahari',
+                    features: [
+                        {
+                            type: 'Feature',
+                            properties: {
+                                kategori: 'Jalan',
+                                provinsi: 'Provinsi F',
+                                kabupaten: 'Kabupaten R',
+                                kecamatan: 'Kecamatan S',
+                                alamat: 'Jalan LMN No. 333',
+                                tanggal: '2024-01-26',
+                                tahun: '2024',
+                            },
+                            geometry: {
+                                coordinates: [115.7463895815444, -2.7746246962266525],
+                                type: 'Point',
+                            },
+                            id: 0,
                         },
-                        id: 0,
-                    },
-                    {
-                        type: 'Feature',
-                        properties: {
-                            kategori: 'sarana prasarana',
-                            provinsi: 'Provinsi G',
-                            kabupaten: 'Kabupaten S',
-                            kecamatan: 'Kecamatan T',
-                            alamat: 'Jalan UVW No. 555',
-                            tanggal: '2024-01-26',
-                            tahun: '2024',
+                        {
+                            type: 'Feature',
+                            properties: {
+                                kategori: 'sarana prasarana',
+                                provinsi: 'Provinsi G',
+                                kabupaten: 'Kabupaten S',
+                                kecamatan: 'Kecamatan T',
+                                alamat: 'Jalan UVW No. 555',
+                                tanggal: '2024-01-26',
+                                tahun: '2024',
+                            },
+                            geometry: {
+                                coordinates: [112.7142735198754, -1.1744708839206623],
+                                type: 'Point',
+                            },
+                            id: 1,
                         },
-                        geometry: {
-                            coordinates: [112.7142735198754, -1.1744708839206623],
-                            type: 'Point',
-                        },
-                        id: 1,
-                    },
-                ],
-            },
+                    ],
+                },
+            ],
         },
     ]
 
@@ -97,22 +116,13 @@ export const Map = (): React.ReactNode => {
         },
         {
             name: 'bantuan',
-            categories: ['jalan', 'sarana prasarana'],
+            categories: ['Map Bantuan Sarana Wisata Bahari'],
         },
     ])
 
-    // Keys
-    const [keys, setKeys] = useState<Keys[]>([])
-
-    // Get keys
-    useEffect(() => {
-        const keysData = getKeys(geoJsonDatasets)
-        setKeys(keysData)
-    }, [])
-
     return (
         <>
-            <Header keys={keys} selCat={selCat} setSelCat={setSelCat} />
+            <Header geoJsonDatasets={geoJsonDatasets} selCat={selCat} setSelCat={setSelCat} />
             <CustomControl setSelectedLayer={setSelectedLayer} />
 
             {/* <div

@@ -1,16 +1,16 @@
 import { Popover, Transition } from '@headlessui/react'
 import React, { Fragment } from 'react'
 import logo from '../../assets/logos/kkp-logo.png'
-import { type Category } from '../../types'
-import { capitalizeFirstLetterOfEachWord, type Keys } from '../../utils'
+import { type Category, type ResponseData } from '../../types'
+import { capitalizeFirstLetterOfEachWord } from '../../utils'
 
 interface Props {
-    keys?: Keys[]
     selCat?: Category[]
     setSelCat: React.Dispatch<React.SetStateAction<Category[]>>
+    geoJsonDatasets: ResponseData[]
 }
 
-export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
+export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target
         const name = target.name
@@ -32,7 +32,12 @@ export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
         })
     }
 
-    const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
+    const bantuanItem = geoJsonDatasets.filter((val) => val.name === 'bantuan')[0]
+    const bantuanData = bantuanItem.data
+    let bantuanCats = bantuanData?.map((val) => val.name)
+    bantuanCats = bantuanCats?.filter((val) => val !== undefined)
+
+    // const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
 
     const getCheckState = (name: string): boolean => {
         const item = selCat?.filter((val) => val.categories.includes(name))
@@ -70,9 +75,9 @@ export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
                             >
                                 <Popover.Panel className="absolute z-10">
                                     <div className="whitespace-nowrap shadow-xl flex flex-col gap-2.5 py-4 mt-7 bg-white rounded-lg p-2 px-4">
-                                        {bantuan?.cateogories?.map((item, i) => (
+                                        {bantuanCats?.map((item, i) => (
                                             <div
-                                                id={bantuan.name}
+                                                id={bantuanItem.name}
                                                 key={i}
                                                 className="flex items-center gap-2"
                                             >
@@ -81,7 +86,7 @@ export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
                                                     type="checkbox"
                                                     name={item}
                                                     id={item}
-                                                    data-group={bantuan.name}
+                                                    data-group={bantuanItem.name}
                                                     onChange={handleChange}
                                                 />
                                                 <label className="text-sm" htmlFor={item}>
