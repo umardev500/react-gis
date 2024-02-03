@@ -110,7 +110,6 @@ export const Map = (): React.ReactNode => {
 
     // Selected categories
     const [selCat, setSelCat] = useState<Category[]>([])
-    console.log(selCat)
 
     return (
         <>
