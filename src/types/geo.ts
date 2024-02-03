@@ -13,8 +13,8 @@ export interface GeoFeature {
     type: string
     properties: any
     geometry: {
-        coordinates: number[]
+        coordinates: any
         type: string
     }
-    id: number
+    id?: number
 }
