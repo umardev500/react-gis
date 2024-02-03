@@ -7,7 +7,7 @@ import { useGetLayer } from '../../hooks/api/GetLayer'
 import { type Category, type Layer, type ResponseData } from '../../types'
 import { popupContent } from '../molecules/popup'
 import { LayersControl as CustomControl } from './LayersControl'
-import animData from '../../assets/anim/anim-5.json'
+import animData from '../../assets/anim/loading.json'
 import Lottie from 'lottie-react'
 
 export const Map = (): React.ReactNode => {
@@ -65,7 +65,7 @@ export const Map = (): React.ReactNode => {
             <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
-                <Lottie animationData={animData} loop className="w-1/3 lg:w-[180px]" />
+                <Lottie animationData={animData} loop className="w-[180px] lg:w-[280px]" />
             </div>
 
             <MapContainer
