@@ -49,7 +49,11 @@ export const MapChild: React.FC<Props> = ({
             const keyGen = Math.random().toString()
             return (
                 <LayersControl.Overlay key={i} checked={i === 1} name={i.toString()}>
-                    <GeoJSON key={keyGen} data={val.data?.features as any} />
+                    <GeoJSON
+                        key={keyGen}
+                        pointToLayer={pointToLayer}
+                        data={val.data?.features as any}
+                    />
                 </LayersControl.Overlay>
             )
         })
