@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import logo from '../../assets/logos/kkp-logo.png'
 import { type Category, type ResponseData } from '../../types'
 import { capitalizeFirstLetterOfEachWord } from '../../utils'
@@ -11,6 +11,8 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) => {
+    geoJsonDatasets = geoJsonDatasets.filter((val) => val.name !== 'none')
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target
         const name = target.name
@@ -47,6 +49,23 @@ export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) 
     const bantuanData = bantuanItem?.data
     let bantuanCats = bantuanData?.map((val) => val.name)
     bantuanCats = bantuanCats?.filter((val) => val !== undefined)
+
+    // Setup initial view
+    useEffect(() => {
+        if (bantuanItem !== undefined && bantuanData !== undefined) {
+            const bantuanDataInit = bantuanData[0]
+
+            setSelCat((prev) => {
+                return [
+                    ...prev,
+                    {
+                        name: bantuanItem.name,
+                        categories: [bantuanDataInit.name],
+                    },
+                ]
+            })
+        }
+    }, [bantuanItem])
 
     const getCheckState = (name: string): boolean => {
         const item = selCat?.filter((val) => val.categories.includes(name))
