@@ -1,3 +1,8 @@
+/*
+  Author: Umar
+  Email: umar.dev500@gmail.com
+*/
+
 import React from 'react'
 import { MapView } from './pages'
 

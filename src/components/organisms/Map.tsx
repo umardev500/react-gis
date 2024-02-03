@@ -14,7 +14,7 @@ export const Map = (): React.ReactNode => {
     const [needToShow, setNeedToShow] = useState(false)
     const [selectedLayer, setSelectedLayer] = useState<Layer>('Default')
 
-    const { loading, data } = useGetLayer()
+    const { loading, data } = useGetLayer() // call hooks to get layers
     useEffect(() => {
         if (!loading) {
             const len = data.length
@@ -22,6 +22,7 @@ export const Map = (): React.ReactNode => {
         }
     }, [loading])
 
+    // Custom marker
     const pointToLayer = (feature: any, latlng: any) => {
         const markerColor = feature?.properties?.['marker-color'] ?? '#ea580c'
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -54,6 +55,7 @@ export const Map = (): React.ReactNode => {
             setGeo((prev) => [...prev, ...geoData])
         }
     }, [data])
+
     // Selected categories
     const [selCat, setSelCat] = useState<Category[]>([])
 
@@ -62,12 +64,15 @@ export const Map = (): React.ReactNode => {
             <Header geoJsonDatasets={geoJsonDatasets} selCat={selCat} setSelCat={setSelCat} />
             <CustomControl setSelectedLayer={setSelectedLayer} />
 
+            {/* Loading */}
             <div
                 className={`${!loading ? 'hide-loading' : ''} absolute bg-white z-50 top-0 right-0 bottom-0 left-0 flex items-center justify-center`}
             >
                 <Lottie animationData={animData} loop className="w-[180px] lg:w-[280px]" />
             </div>
+            {/* End of loading */}
 
+            {/* Map */}
             <MapContainer
                 center={[-0.7113503477916671, 119.47647368401239]}
                 zoom={6}
@@ -84,6 +89,7 @@ export const Map = (): React.ReactNode => {
 
                 <ZoomControl position="bottomright" />
             </MapContainer>
+            {/* End of map */}
         </>
     )
 }

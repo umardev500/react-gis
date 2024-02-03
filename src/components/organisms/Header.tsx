@@ -48,8 +48,6 @@ export const Header: React.FC<Props> = ({ selCat, setSelCat, geoJsonDatasets }) 
     let bantuanCats = bantuanData?.map((val) => val.name)
     bantuanCats = bantuanCats?.filter((val) => val !== undefined)
 
-    // const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
-
     const getCheckState = (name: string): boolean => {
         const item = selCat?.filter((val) => val.categories.includes(name))
         if (item !== undefined) return item.length > 0

@@ -11,13 +11,9 @@ interface Props {
     selCat: Category[]
     needToShow: boolean
 }
-export const MapChild: React.FC<Props> = ({
-    geoJsonDatasets,
-    selectedLayer,
-    pointToLayer,
-    selCat,
-    needToShow,
-}) => {
+export const MapChild: React.FC<Props> = (props) => {
+    const { geoJsonDatasets, selectedLayer, pointToLayer, selCat, needToShow } = props
+
     // Filtered data
     const [filData, setFilData] = useState<ResponseData[]>([])
     const [ovLayer, setOvLayer] = useState<React.ReactNode[]>([])
