@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { type GeoJSON, type LayerResponse } from '../../types'
+import { type LayerResponse, type ResponseData } from '../../types'
 
 export const useGetLayer = () => {
     const [loading, setLoading] = useState(true)
-    const [data, setData] = useState<GeoJSON[]>([])
+    const [data, setData] = useState<ResponseData[]>([])
     const api = import.meta.env.VITE_API
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export const useGetLayer = () => {
             try {
                 const res = await fetch(url)
                 const data: LayerResponse = await res.json()
-                const layers: GeoJSON[] = data.data
+                const layers: ResponseData[] = data.data
                 setTimeout(() => {
                     setData(layers)
                 }, 1000)
