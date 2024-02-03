@@ -9,6 +9,7 @@ body {
 .leaflet-popup-content {
     max-width: 7000px !important;
     padding-top: 10px;
+    width: auto !important;
 }
 
 .leaflet-popup-close-button {
@@ -32,7 +33,6 @@ body {
 
 .popup-label {
     display: flex;
-    flex: 0.4;
     justify-content: space-between;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .popup-value {
-    flex: 1;
+    white-space: nowrap;
 }
 
 .hide-loading {

@@ -1,26 +1,47 @@
 import { Popover, Transition } from '@headlessui/react'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import logo from '../../assets/logos/kkp-logo.png'
+import { type Category } from '../../types'
 import { capitalizeFirstLetterOfEachWord, type Keys } from '../../utils'
 
 interface Props {
     keys?: Keys[]
+    selCat?: Category[]
+    setSelCat: React.Dispatch<React.SetStateAction<Category[]>>
 }
 
-export const Header: React.FC<Props> = ({ keys }) => {
-    const [checkboxState, setCheckboxState] = useState<Record<string, boolean>>({
-        wisata: false,
-        adat: false,
-        konservasi: false,
-        bmkt: false,
-    })
-
+export const Header: React.FC<Props> = ({ keys, selCat, setSelCat }) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const name = event.target.name
-        setCheckboxState((prev) => ({ ...prev, [name]: event.target.checked }))
+        const target = event.target
+        const name = target.name
+        const group = target.dataset.group
+
+        setSelCat((prev) => {
+            return prev.map((val) => {
+                if (val.name === group) {
+                    return {
+                        ...val,
+                        categories: val.categories.includes(name)
+                            ? val.categories.filter((item) => item !== name)
+                            : [...val.categories, name],
+                    }
+                }
+
+                return val
+            })
+        })
     }
 
     const bantuan = keys?.filter((val) => val.name === 'bantuan')[0]
+    useEffect(() => {
+        console.log(selCat)
+    }, [selCat])
+
+    const getCheckState = (name: string): boolean => {
+        const item = selCat?.filter((val) => val.categories.includes(name))
+        if (item !== undefined) return item.length > 0
+        return false
+    }
 
     return (
         <header className="px-4 py-1 h-16 header flex absolute lg:grid lg:grid-cols-8 justify-between items-center z-30 bg-white left-0 top-0 right-0 shadow-lg">
@@ -53,12 +74,17 @@ export const Header: React.FC<Props> = ({ keys }) => {
                                 <Popover.Panel className="absolute z-10">
                                     <div className="whitespace-nowrap shadow-xl flex flex-col gap-2.5 py-4 mt-7 bg-white rounded-lg p-2 px-4">
                                         {bantuan?.cateogories?.map((item, i) => (
-                                            <div key={i} className="flex items-center gap-2">
+                                            <div
+                                                id={bantuan.name}
+                                                key={i}
+                                                className="flex items-center gap-2"
+                                            >
                                                 <input
-                                                    checked={checkboxState[item] || false}
+                                                    checked={getCheckState(item)}
                                                     type="checkbox"
                                                     name={item}
                                                     id={item}
+                                                    data-group={bantuan.name}
                                                     onChange={handleChange}
                                                 />
                                                 <label className="text-sm" htmlFor={item}>

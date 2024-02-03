@@ -27,7 +27,7 @@ export const Map = (): React.ReactNode => {
     }, [loading])
 
     const pointToLayer = (feature: any, latlng: any) => {
-        const markerColor = feature.properties['marker-color'] || '#ea580c'
+        const markerColor = feature?.properties?.['marker-color'] ?? '#ea580c'
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         const marker = L.marker(latlng, {
             icon: L.divIcon({
@@ -59,7 +59,12 @@ export const Map = (): React.ReactNode => {
                         type: 'Feature',
                         properties: {
                             kategori: 'Jalan',
-                            alamat: 'Jl. Raya Labuan Km.12',
+                            provinsi: 'Provinsi F',
+                            kabupaten: 'Kabupaten R',
+                            kecamatan: 'Kecamatan S',
+                            alamat: 'Jalan LMN No. 333',
+                            tanggal: '2024-01-26',
+                            tahun: '2024',
                         },
                         geometry: {
                             coordinates: [115.7463895815444, -2.7746246962266525],
@@ -71,6 +76,12 @@ export const Map = (): React.ReactNode => {
                         type: 'Feature',
                         properties: {
                             kategori: 'sarana prasarana',
+                            provinsi: 'Provinsi G',
+                            kabupaten: 'Kabupaten S',
+                            kecamatan: 'Kecamatan T',
+                            alamat: 'Jalan UVW No. 555',
+                            tanggal: '2024-01-26',
+                            tahun: '2024',
                         },
                         geometry: {
                             coordinates: [112.7142735198754, -1.1744708839206623],
@@ -129,7 +140,7 @@ export const Map = (): React.ReactNode => {
 
     return (
         <>
-            <Header keys={keys} />
+            <Header keys={keys} selCat={selCat} setSelCat={setSelCat} />
             <CustomControl setSelectedLayer={setSelectedLayer} />
 
             {/* <div
@@ -142,7 +153,7 @@ export const Map = (): React.ReactNode => {
                 center={[-0.7113503477916671, 119.47647368401239]}
                 zoom={6}
                 zoomControl={false}
-                className="absolute top-0 right-0 bottom-0 left-0 -z-0"
+                className="absolute top-16 right-0 bottom-0 left-0 -z-0"
             >
                 <LayersControl>
                     <LayersControl.BaseLayer checked={selectedLayer === 'Default'} name="Street">
@@ -179,6 +190,7 @@ export const Map = (): React.ReactNode => {
                         </LayersControl.Overlay>
                     ))}
 
+                    
                     {needToShow ? (
                         <>
                             <LayersControl.Overlay checked name={'Bantuan Pemerintah'}>
