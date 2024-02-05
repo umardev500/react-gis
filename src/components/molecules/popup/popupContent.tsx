@@ -15,15 +15,20 @@ export const popupContent = (feature: any): string => {
     const data = feature.properties
     for (const key in data) {
         if (Object.prototype.hasOwnProperty.call(data, key)) {
-            const value = data[key].toString() as string
-            if (ignoredValues.includes(value)) {
+            const value = data[key]
+            if (value === null) {
+                continue
+            }
+
+            const valueStr = value.toString() as string
+            if (ignoredValues.includes(valueStr)) {
                 continue
             }
 
             if (!ignoredProperties.map((prop) => prop.toLowerCase()).includes(key.toLowerCase())) {
                 prop.push({
                     title: capitalizeFirstLetterOfEachWord(key),
-                    value: capitalizeFirstLetterOfEachWord(value),
+                    value: capitalizeFirstLetterOfEachWord(valueStr),
                 })
             }
         }
