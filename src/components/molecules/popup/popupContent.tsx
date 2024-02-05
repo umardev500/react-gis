@@ -7,6 +7,7 @@ interface Properties {
 }
 
 const ignoredProperties = ['Marker-Name', 'Marker-Size', 'Marker-Color', 'Marker-Symbol']
+const ignoredValues = ['<Null>']
 
 export const popupContent = (feature: any): string => {
     const prop: Properties[] = []
@@ -14,12 +15,15 @@ export const popupContent = (feature: any): string => {
     const data = feature.properties
     for (const key in data) {
         if (Object.prototype.hasOwnProperty.call(data, key)) {
-            const value = data[key]
+            const value = data[key].toString() as string
+            if (ignoredValues.includes(value)) {
+                continue
+            }
 
             if (!ignoredProperties.map((prop) => prop.toLowerCase()).includes(key.toLowerCase())) {
                 prop.push({
                     title: capitalizeFirstLetterOfEachWord(key),
-                    value: capitalizeFirstLetterOfEachWord(value as string),
+                    value: capitalizeFirstLetterOfEachWord(value),
                 })
             }
         }

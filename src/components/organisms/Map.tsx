@@ -38,6 +38,7 @@ export const Map = (): React.ReactNode => {
 
         marker.bindPopup(popupContent(feature), {
             offset: [4, -10],
+            maxWidth: 350,
         })
 
         return marker
